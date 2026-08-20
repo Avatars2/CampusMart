@@ -1,0 +1,221 @@
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F5F7FA',
+  },
+  scrollContent: {
+    paddingBottom: 110,
+  },
+  // Carousel
+  carouselContainer: {
+    width: width,
+    height: width * 0.75,
+    backgroundColor: '#F0F2F5',
+  },
+  carouselImage: {
+    width: width,
+    height: width * 0.75,
+    resizeMode: 'cover',
+  },
+  paginationContainer: {
+    position: 'absolute',
+    bottom: 16,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  paginationDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginHorizontal: 4,
+  },
+  paginationDotActive: {
+    backgroundColor: '#0052CC',
+    width: 24,
+    height: 8,
+    borderRadius: 4,
+  },
+  paginationDotInactive: {
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+  },
+  imageCounter: {
+    position: 'absolute',
+    top: 12,
+    right: 12,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 12,
+  },
+  imageCounterText: {
+    color: '#FFF',
+    fontSize: 12,
+    fontWeight: '700',
+  },
+
+  // Details
+  detailsContainer: {
+    backgroundColor: '#FFF',
+    padding: 24,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    marginTop: -24,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.06,
+    shadowRadius: 10,
+    elevation: 6,
+  },
+  titlePriceRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 14,
+  },
+  itemName: {
+    fontSize: 22,
+    fontWeight: '800',
+    color: '#1A1F36',
+    flex: 1,
+    marginRight: 12,
+    lineHeight: 28,
+  },
+  itemPrice: {
+    fontSize: 24,
+    fontWeight: '900',
+    color: '#0052CC',
+  },
+  badgesRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: 24,
+  },
+  badge: {
+    backgroundColor: '#F0F4FF',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+    marginRight: 10,
+    marginBottom: 8,
+    borderWidth: 1,
+    borderColor: '#E0E7FF',
+  },
+  badgeText: {
+    fontSize: 12,
+    color: '#3B5998',
+    fontWeight: '600',
+  },
+
+  // Seller
+  sectionTitle: {
+    fontSize: 17,
+    fontWeight: '700',
+    color: '#1A1F36',
+    marginBottom: 14,
+    marginTop: 8,
+  },
+  sellerCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FAFBFD',
+    padding: 16,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#E5E9F0',
+    marginBottom: 24,
+  },
+  sellerAvatar: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    marginRight: 14,
+    backgroundColor: '#E5E9F0',
+    borderWidth: 2,
+    borderColor: '#0052CC',
+  },
+  sellerInfo: {
+    flex: 1,
+  },
+  sellerName: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#1A1F36',
+  },
+  sellerSubtitle: {
+    fontSize: 12,
+    color: '#8792A2',
+    marginTop: 2,
+    fontWeight: '500',
+  },
+
+  // Description
+  descriptionText: {
+    fontSize: 15,
+    color: '#4F566B',
+    lineHeight: 24,
+    marginBottom: 20,
+  },
+
+  // Bottom Bar
+  bottomBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#FFF',
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    borderTopWidth: 1,
+    borderTopColor: '#F0F2F5',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.06,
+    shadowRadius: 10,
+    elevation: 10,
+    flexDirection: 'row',
+    gap: 12,
+  },
+  primaryButton: {
+    flex: 1,
+    backgroundColor: '#0052CC',
+    borderRadius: 14,
+    paddingVertical: 14,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#0052CC',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  primaryButtonText: {
+    color: '#FFF',
+    fontSize: 15,
+    fontWeight: '700',
+    marginLeft: 8,
+  },
+  secondaryButton: {
+    flex: 1,
+    backgroundColor: '#F0F5FF',
+    borderRadius: 14,
+    paddingVertical: 14,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: '#0052CC',
+  },
+  secondaryButtonText: {
+    color: '#0052CC',
+    fontSize: 15,
+    fontWeight: '700',
+    marginLeft: 8,
+  },
+});

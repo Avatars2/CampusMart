@@ -1,0 +1,123 @@
+import React, { useState, useCallback } from 'react';
+import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, Image, RefreshControl } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useFocusEffect } from '@react-navigation/native';
+import client from '../../api/client';
+import styles from './styles';
+
+export default function SellScreen({ navigation }) {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const fetchMyItems = async () => {
+    try {
+      const response = await client.get('/items/my-items');
+      setItems(response.data);
+    } catch (error) {
+      console.error("Error fetching my items:", error);
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchMyItems();
+    }, [])
+  );
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    fetchMyItems();
+  };
+
+  const renderItem = ({ item }) => {
+    const imageUrl = item.images && item.images.length > 0 ? item.images[0] : 'https://via.placeholder.com/100';
+    return (
+      <View style={styles.itemCard}>
+        <Image source={{ uri: imageUrl }} style={styles.itemImage} />
+        <View style={styles.itemDetails}>
+          <Text style={styles.itemName} numberOfLines={1}>{item.name}</Text>
+          <Text style={styles.itemCategory}>{item.category_name}</Text>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Text style={styles.itemPrice}>₹{item.price}</Text>
+            <TouchableOpacity
+              style={styles.editButton}
+              onPress={() => navigation.navigate('EditProduct', { item })}
+              activeOpacity={0.7}
+            >
+              <Ionicons name="pencil" size={18} color="#0052CC" />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.itemFooter}>
+            <Text style={styles.itemCondition}>{item.condition_rating ? item.condition_rating.replace('_', ' ') : ''}</Text>
+            <View style={[styles.statusBadge, item.is_active ? styles.statusActive : styles.statusSold]}>
+              <Text style={[styles.statusText, item.is_active ? styles.statusTextActive : styles.statusTextSold]}>
+                {item.is_active ? 'Active' : 'Sold'}
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
+  if (loading && !refreshing) {
+    return (
+      <View style={styles.centerContainer}>
+        <ActivityIndicator size="large" color="#0052CC" />
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      {/* Header */}
+      <View style={styles.screenHeader}>
+        <View style={styles.screenHeaderRow}>
+          <Text style={styles.screenTitle}>My Listings</Text>
+          <View style={styles.itemCountBadge}>
+            <Text style={styles.itemCountText}>{items.length} items</Text>
+          </View>
+        </View>
+      </View>
+
+      {items.length === 0 ? (
+        <View style={styles.emptyContainer}>
+          <View style={styles.emptyIconBg}>
+            <Ionicons name="pricetag-outline" size={44} color="#0052CC" />
+          </View>
+          <Text style={styles.emptyText}>No listings yet</Text>
+          <Text style={styles.emptySubText}>Start selling by adding your first item to the marketplace!</Text>
+          <TouchableOpacity
+            style={styles.emptyButton}
+            onPress={() => navigation.navigate('AddProduct')}
+            activeOpacity={0.85}
+          >
+            <Text style={styles.emptyButtonText}>Add Your First Item</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <FlatList
+          data={items}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderItem}
+          contentContainerStyle={styles.listContent}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#0052CC']} />
+          }
+        />
+      )}
+
+      <TouchableOpacity
+        style={styles.fab}
+        onPress={() => navigation.navigate('AddProduct')}
+        activeOpacity={0.85}
+      >
+        <Ionicons name="add" size={28} color="#FFF" />
+      </TouchableOpacity>
+    </View>
+  );
+}

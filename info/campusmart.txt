@@ -1,0 +1,263 @@
+Title: CampusMart - Enhanced Project Specification
+
+PROJECT OVERVIEW:
+CampusMart is a peer-to-peer e-commerce platform designed exclusively for college students to buy and sell items within their campus. The platform provides a secure, trusted environment for students to trade textbooks, electronics, furniture, and other items.
+
+CORE FEATURES:
+
+1. AUTHENTICATION SYSTEM
+   - Registration Page:
+     * Fields: Full Name, College Email ID (validated against college domain), Password, Mobile Number, Student ID
+     * Email verification via OTP sent to college email
+     * Mobile verification via SMS OTP
+     * Terms & conditions acceptance
+   - Login Page:
+     * Email/Password authentication
+     * "Remember Me" option
+     * Forgot Password with email verification link
+     * Account lockout after failed attempts (security feature)
+   - Password Reset:
+     * Secure link sent to registered email
+     * Password strength requirements
+     * Confirmation email after reset
+   - Payment Setup: (See Section 9: Payment System for details)
+
+2. STUDENT DASHBOARD
+   - Navigation: Home, Buy, Sell, Profile, Messages, Notifications
+   - Mobile-responsive design with bottom navigation bar
+   - Quick stats: Active listings, Pending orders, Messages unread
+
+3. HOME PAGE
+   - Featured items carousel
+   - Categories: Books, Electronics, Furniture, Stationery, Clothing, Others
+   - Advanced search with filters:
+     * Category, Listing Type (Buy/Rent), Price range, Condition (New/Used), Location
+     * Sort by: Price, Date, Popularity
+   - Recently added items section
+   - Trending items section
+   - College-specific announcements
+
+4. BUY PAGE
+   - Three tabs:
+     a) Cart: Selected items with quantity controls, total calculation, checkout button
+     b) Active Orders: Currently processing orders with status tracking (See Section 10: Delivery System for details)
+     c) Purchase History: Completed orders with option to re-order or leave reviews (See Section 12: Item Reviews & Ratings System for details)
+   - Wishlist/Favorites section with price drop notifications
+   - Price comparison feature across similar items
+   - Return & Exchange: (See Section 10: Delivery System for details)
+
+5. SELL PAGE
+   - Three tabs:
+     a) Add Item:
+        * Item name, detailed description, category
+        * Listing type (Permanent Sell or Rent)
+         * Price/Rental rate (fixed or negotiable), condition rating
+        * Multiple photo uploads (up to 5 images)
+        * Location/hostel/room number
+        * Stock quantity
+        * Expected delivery time
+        * Delivery options: Self-pickup, Campus courier, External delivery
+     b) Active Listings:
+        * Current items with edit/delete options
+        * View count, interested buyers count
+        * Mark as sold/sold out
+        * Average rating display from buyer reviews (See Section 12: Item Reviews & Ratings System for details)
+     c) Sales History:
+        * Completed sales with buyer details
+        * Revenue tracking and sales analytics (See Section 9: Payment System for payout details)
+
+6. PROFILE PAGE
+   - User Information:
+     * Name, Profile photo, College Email, Mobile Number
+     * Student ID, Department, Year/ Semester
+     * Bio/About me
+   - Account Settings:
+     * Change password (with current password verification)
+     * Update mobile number (with OTP verification)
+     * Email preferences
+   - Reputation System: (See Section 12: Item Reviews & Ratings System for details)
+   - Delivery Preferences: (See Section 10: Delivery System for details)
+   - Report Center: (See Section 13: Report System for details)
+   - Logout with confirmation
+
+7. MESSAGING SYSTEM
+   - Real-time chat between buyers and sellers
+   - Item-specific chat threads
+   - File sharing (additional item photos)
+   - Read receipts
+   - Chat history
+
+8. NOTIFICATION SYSTEM
+   - Push notifications for:
+     * New messages
+     * Order status updates
+     * Price drops on wishlist items
+     * New item alerts in followed categories
+     * Delivery status updates
+     * Payment confirmations and refunds
+     * Report status updates
+   - In-app notification center with read/unread status
+
+9. PAYMENT SYSTEM
+   - Payment Methods:
+     * UPI integration (Google Pay, PhonePe, Paytm, BHIM)
+   - Transaction Security:
+     * Two-factor authentication for payments above ₹500
+     * Escrow system: Money held until buyer confirms delivery
+     * Refund processing within 5-7 business days
+     * Payment dispute resolution
+     * Fraud detection and prevention
+   - Transaction Features:
+     * Transaction history with detailed receipts
+     * Download invoices and receipts
+     * Payment reminders and notifications
+     * Split payment option for expensive items
+     * EMI options for purchases above ₹2000
+   - Seller Payouts:
+     * Automatic payout to seller's bank account
+     * Minimum withdrawal amount: ₹100
+     * Payout processing time: 2-3 business days
+     * Transaction fee: 2% per sale
+     * Tax documentation and GST invoices
+
+10. DELIVERY SYSTEM
+    - In-Person Meetup Coordination:
+     * Safe meetup locations on campus (library, cafeteria, security desk)
+     * Meetup scheduling with date/time selection
+     * Location sharing with map integration
+     * Meetup confirmation and reminders
+     * Emergency contact option during meetups
+     * Meetup rating and feedback
+    - Delivery Status Tracking:
+     * Order status: Pending → Confirmed → Shipped → Out for Delivery → Delivered
+     * Real-time tracking updates
+     * Estimated delivery time display
+     * Delivery partner information
+     * SMS/WhatsApp notifications for status updates
+    - Delivery Options:
+     * Self-pickup (meetup on campus)
+     * Campus courier service
+     * External delivery partners (Dunzo, Porter for local)
+     * Locker system (if available on campus)
+    - Delivery Confirmation:
+     * Photo confirmation of delivery
+     * Digital signature on delivery
+     * Buyer confirmation button in app
+     * Automatic confirmation after 3 days if no dispute
+    - Return & Exchange:
+     * 7-day return policy for defective items
+     * Return request submission with reason
+     * Return shipping coordination
+     * Refund processing after return inspection
+
+11. ADMIN PANEL
+   - User Management:
+     * View all registered users with detailed information
+     * User verification and approval workflow
+     * Account suspension and permanent banning
+     * User activity monitoring and logs
+     * Bulk user operations (export, suspend, verify)
+     * Advanced user search and filters
+   - Item Moderation:
+     * Review and approve new item listings
+     * Remove inappropriate or prohibited items
+     * Edit item details (admin override capability)
+     * Category management and creation
+     * Featured item selection and promotion
+     * Bulk item operations
+     * AI-powered content filtering for prohibited items
+   - Report Management: (See Section 13: Report System for details)
+   - Payment & Financial Management: (See Section 9: Payment System for details)
+   - Analytics Dashboard:
+     * User growth metrics (daily/weekly/monthly charts)
+     * Item listing statistics and trends
+     * Transaction volume and revenue tracking
+     * Category performance analysis
+     * Popular items and trending items
+     * User engagement metrics and retention
+     * Conversion rate tracking and optimization
+     * Geographic distribution of users
+   - System Health Monitoring:
+     * Server performance metrics and uptime
+     * Database health status and query performance
+     * API response times and error rates
+     * Storage usage tracking and alerts
+     * Backup status verification and scheduling
+     * Security alerts and intrusion detection
+   - Content Moderation:
+     * Automated spam detection and prevention
+     * Suspicious activity flagging
+     * Automatic temporary holds on flagged content
+     * Review moderation and fake review detection
+
+12. ITEM REVIEWS & RATINGS SYSTEM
+   - Review Submission:
+     * Buyers can review items after purchase completion
+     * 5-star rating system (1-5 stars with half-star support)
+     * Written text reviews (minimum 50 characters, maximum 500 characters)
+     * Photo uploads with reviews (up to 3 photos per review)
+     * Rating categories: Quality, Accuracy, Communication, Delivery Speed
+   - Review Display:
+     * Average rating displayed on item cards
+     * Breakdown of ratings by category
+     * Most helpful reviews shown first
+     * Filter reviews by rating (1-5 stars)
+     * Sort by: Recent, Helpful, Rating
+   - Review Interaction:
+     * Helpful/Unhelpful voting on reviews
+     * Report inappropriate reviews
+     * Seller response to reviews
+     * Edit reviews within 7 days of posting
+   - Review Analytics:
+     * Rating distribution charts
+     * Review trends over time
+     * Seller performance metrics based on reviews
+
+13. REPORT SYSTEM
+    - Reporting Options:
+     * Report inappropriate items (fake, prohibited items, wrong category)
+     * Report suspicious users (fraud, harassment, spam)
+     * Report fake reviews or ratings
+     * Report payment disputes
+    - Report Categories:
+     * Item violations: Counterfeit items, prohibited goods, misleading descriptions
+     * User violations: Fraudulent behavior, harassment, spam, multiple accounts
+     * Review violations: Fake reviews, inappropriate content, conflicts of interest
+    - Report Submission:
+     * Detailed report form with category selection
+     * Evidence upload (screenshots, chat logs, photos)
+     * Additional comments section
+     * Anonymous reporting option
+    - Report Tracking:
+     * View submitted reports and their status
+     * Report priority system (High/Medium/Low)
+     * Case management with status tracking
+     * Appeal system for users to contest actions
+
+14. TECHNOLOGY STACK
+- Frontend: React Native (cross-platform mobile app)
+- Backend: Node.js with Express
+- Database: PostgreSQL
+- Authentication: JWT tokens, OAuth 2.0
+- Real-time: Socket.io for messaging
+- File Storage: AWS S3 or Cloudinary for images
+- Payment: UPI integration
+- Email Service: SendGrid or AWS SES
+- Mobile Features: Push notifications (Firebase Cloud Messaging), Biometric authentication
+
+15. DATABASE STRUCTURE (POSTGRESQL TABLES)
+- Users (id, name, email, password, phone, student_id, department, etc.)
+- Items (id, seller_id, name, description, price, listing_type, category, images, etc.)
+- Orders (id, buyer_id, item_id, status, total_price, etc.)
+- Messages (id, sender_id, receiver_id, item_id, content, timestamp)
+- Reviews (id, user_id, item_id, rating, comment)
+- Categories (id, name, description)
+- Notifications (id, user_id, type, content, read_status)
+- Reports (id, reporter_id, reported_id, category, status, evidence)
+- Transactions (id, user_id, amount, type, status, payment_method)
+- Delivery (id, order_id, method, status, tracking_info)
+- Wishlist (id, user_id, item_id, price_alert)
+- Sessions (id, user_id, token, device_info, expires_at, is_active)
+- OTPs (id, email, otp_code, expires_at)
+- Audit_Log (id, admin_id, action, entity_type, entity_id, old_values, new_values)
+
